@@ -37,7 +37,7 @@ export const BookPageReviews = ({ comments }) => {
 
       <div className={classNames('reviews', { hide: !isReviewsOpen })}>{commentsList}</div>
       <div className='review-button'>
-        <button type='submit' className='book-button available' data-test-id='button-rating'>
+        <button type='button' className='booking-button book-button available' data-test-id='button-rating'>
           оценить книгу
         </button>
       </div>

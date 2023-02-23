@@ -1,3 +1,4 @@
+import React from 'react';
 import Lottie from 'react-lottie';
 import { Outlet } from 'react-router-dom';
 
@@ -7,7 +8,8 @@ import { useGetBooksQuery, useGetCategoriesQuery } from '../../redux/api';
 import { Menu } from '../main/components/menu/menu';
 
 export const LayoutMainPage = () => {
-  const { isLoading: booksLoading, error: booksError } = useGetBooksQuery();
+  const { isLoading: booksLoading, error: booksError, isFetching: bookFetching } = useGetBooksQuery();
+
   const { isLoading: categoriesLoading, error: categoriesError } = useGetCategoriesQuery();
 
   const defaultOptions = {
@@ -16,7 +18,7 @@ export const LayoutMainPage = () => {
     animationData,
   };
 
-  if ((booksLoading || categoriesLoading) && (!booksError || !categoriesError)) {
+  if ((bookFetching || booksLoading || categoriesLoading) && (!booksError || !categoriesError)) {
     return (
       <div className='loader' data-test-id='loader'>
         <Lottie options={defaultOptions} width={150} height={150} />
@@ -28,12 +30,15 @@ export const LayoutMainPage = () => {
     <section className='main-wrapper'>
       <main>
         <div className='main'>
-          <div className='main-left'>{window.innerWidth >= 1200 ? <Menu test='navigation' /> : null}</div>
+          <div className='main-left'>
+            <Menu test='navigation' />
+          </div>
+          {/* {window.innerWidth >= 1200 ? <Menu test='navigation' /> : null} */}
           {booksError || categoriesError ? (
-            <>
+            <React.Fragment>
               <Error />
               <Outlet />
-            </>
+            </React.Fragment>
           ) : (
             <Outlet />
           )}

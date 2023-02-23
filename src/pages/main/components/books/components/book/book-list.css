@@ -13,8 +13,6 @@
 .book-list-picture {
   width: 120px;
   height: 170px;
-  /* border: 1px solid #a7a7a7;
-  border-radius: 3px; */
   margin-right: 16px;
 }
 
@@ -41,13 +39,6 @@
 .book-list-button {
   width: 174px;
   height: 40px;
-  border-radius: 20px;
-  text-transform: uppercase;
-  background: #f9f9fa;
-  color: #a7a7a7;
-  border: 1px solid #bfc4c9;
-  font-weight: 600;
-  font-size: 12px;
 }
 
 .book-list-bottom {
@@ -64,23 +55,6 @@
   width: 100%;
 }
 
-/* Общие */
-.available {
-  background: linear-gradient(231.58deg, #f83600 -53.35%, #f9d423 297.76%);
-  border: 1px solid transparent;
-  color: #ffffff;
-}
-
-.available:hover {
-  border: 1px solid #ff740f;
-  box-shadow: 0px 2px 5px rgba(54, 54, 54, 0.1);
-}
-
-.available:active {
-  border: 1px solid transparent;
-  box-shadow: 0px 3px 4px rgba(222, 125, 11, 0.2), 0px 1px 10px rgba(249, 89, 8, 0.2);
-}
-
 @media screen and (max-width: 768px) {
   .book-list-picture img {
     width: 120px;
@@ -93,9 +67,6 @@
 }
 
 @media screen and (max-width: 580px) {
-  /* .book-list-left-container {
-    justify-content: left;
-  } */
   .book-list-title {
     font-weight: 600;
     font-size: 14px;

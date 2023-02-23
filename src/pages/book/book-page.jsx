@@ -1,6 +1,8 @@
+import React from 'react';
 import Lottie from 'react-lottie';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
+import { BookingButton } from '../../components/button/button';
 import { Error } from '../../components/error/error';
 import * as animationData from '../../components/loader/loader.json';
 import { useGetBookByIdQuery } from '../../redux/api';
@@ -9,6 +11,7 @@ import { BookPageInfoTable } from './components/book-info-table/book-info-table'
 import { BookPageRating } from './components/book-rating/book-rating';
 import { BookPageReviews } from './components/book-reviews/book-reviews';
 import { BookSwiper } from './components/book-swiper/book-swiper';
+import { Breadcrumbs } from './components/breadcrumbs/breadcrumbs';
 
 import './book-page.css';
 
@@ -29,7 +32,7 @@ export const BookPage = () => {
 
   const { data: book, isLoading, error } = useGetBookByIdQuery(id);
 
-  console.log('Книга:', book);
+  // console.log('Книга:', book);
 
   if (isLoading && !error) {
     return (
@@ -42,15 +45,11 @@ export const BookPage = () => {
   return (
     <section className='main-wrapper book-page'>
       <main>
-        <div className='book-route'>
-          <Link to={`/books/${params.category}`}>
-            {book?.categories || params.category} / {book?.title}
-          </Link>
-        </div>
+        <Breadcrumbs params={params} book={book} />
         {error ? (
           <Error />
         ) : (
-          <>
+          <React.Fragment>
             <div className='main'>
               <div className='main-left'>
                 <div className='book-picture'>
@@ -58,12 +57,11 @@ export const BookPage = () => {
                 </div>
               </div>
               <div className='main-right'>
-                <h3 className='book-title'>{book.title}</h3>
-
+                <h3 className='book-title' data-test-id='book-title'>
+                  {book.title}
+                </h3>
                 <h5 className='book-author'>{book.authors}</h5>
-                <button type='submit' className='book-button available'>
-                  Забронировать
-                </button>
+                <BookingButton className='booking-button book-button available' text='Забронировать' />
                 <div className='book-about'>
                   <h5>О книге</h5>
                   <p className='book-description'>{book.description}</p>
@@ -75,7 +73,7 @@ export const BookPage = () => {
               <BookPageInfoTable book={book} />
               <BookPageReviews comments={book.comments} />
             </div>
-          </>
+          </React.Fragment>
         )}
       </main>
     </section>

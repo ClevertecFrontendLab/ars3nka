@@ -23,7 +23,7 @@
   background: #ffffff;
   border: 0px;
   height: 100%;
-  color: #a7a7a7;
+  color: var(--color-gray);
 }
 
 .search-input {
@@ -44,11 +44,11 @@
 
 .search:focus {
   outline: none;
-  color: #f83600;
+  color: var(--color-orange);
 }
 
 .search::placeholder {
-  color: #a7a7a7;
+  color: var(--color-gray);
 }
 
 .input-search-icon {
@@ -58,7 +58,7 @@
 }
 
 .search-active .input-search-icon path {
-  fill: #f83600;
+  fill: var(--color-orange);
 }
 
 .sort {
@@ -86,12 +86,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  fill: #a7a7a7;
+  fill: var(--color-gray);
 }
 
 .sort-button:hover {
   background: #ffffff;
-  fill: #a7a7a7;
+  fill: var(--color-gray);
   filter: drop-shadow(0px 2px 5px rgba(54, 54, 54, 0.1));
 }
 
@@ -108,12 +108,12 @@
   height: 19px;
 }
 
-.sort-button-active {
-  background: linear-gradient(231.58deg, #f83600 -53.35%, #f9d423 297.76%);
+.sortButtonActive {
+  background: linear-gradient(231.58deg, var(--color-orange) -53.35%, #f9d423 297.76%);
   fill: #ffffff;
 }
 
-.sort-button-active img {
+.sortButtonActive img {
   color: #ffffff;
 }
 

@@ -19,12 +19,11 @@
 
 .book-page .book-route {
   background-color: #f9f9fa;
-  /* width: 100vw; */
   height: 64px;
   padding: 20px 0px 20px 165px;
   font-weight: 400;
   font-size: 14px;
-  color: #a7a7a7;
+  color: var(--color-gray);
   margin-bottom: 42px;
 }
 

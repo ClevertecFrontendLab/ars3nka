@@ -18,4 +18,4 @@ export const dataApi = createApi({
   }),
 });
 
-export const { useGetCategoriesQuery, useGetBooksQuery, useGetBookByIdQuery } = dataApi;
+export const { useGetCategoriesQuery, useGetBooksQuery, useGetBooksQuerySubscription, useGetBookByIdQuery } = dataApi;

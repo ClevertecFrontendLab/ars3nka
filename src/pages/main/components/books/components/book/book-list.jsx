@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 
+import { BookingButton } from '../../../../../../components/button/button';
 import { BASE_URL } from '../../../../../../redux/api';
 
 import { StarRating } from './components/star-rating/star-rating';
@@ -7,7 +8,7 @@ import altImage from './img/BookAltImage.png';
 
 import './book-list.css';
 
-export const BookList = ({ image, rating, title, authors, available, id, category }) => (
+export const BookList = ({ image, rating, title, authors, booking, id, category }) => (
   <NavLink to={`/books/${category}/${id}`}>
     <div className='book-list' data-test-id='card'>
       <div className='book-picture book-list-picture'>
@@ -18,14 +19,10 @@ export const BookList = ({ image, rating, title, authors, available, id, categor
         <div className='book-list-author'>{authors}</div>
         <div className='book-list-bottom'>
           <div>{typeof rating === 'string' ? rating : <StarRating rating={rating} />}</div>
-          {available === true ? (
-            <button type='submit' className='book-list-button available'>
-              Забронировать
-            </button>
+          {booking === null ? (
+            <BookingButton className='booking-button book-list-button available' text='Забронировать' />
           ) : (
-            <button type='submit' className='book-list-button'>
-              {available}
-            </button>
+            <BookingButton className='booking-button book-list-button' text='Забронирована' />
           )}
         </div>
       </div>

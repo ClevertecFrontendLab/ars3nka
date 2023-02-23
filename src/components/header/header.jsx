@@ -11,7 +11,7 @@ import * as animationData from '../loader/loader.json';
 import userImg from './img/avatar.png';
 import logo from './img/logo.svg';
 
-import './header.css';
+import './header.scss';
 
 export const Header = () => {
   const userName = 'Иван';

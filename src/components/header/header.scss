@@ -1,0 +1,113 @@
+.header-section {
+  margin-bottom: 47px;
+  .header {
+    display: flex;
+    flex-direction: row;
+    width: 1110px;
+    height: 58px;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 32px;
+    .header-logo {
+      margin-right: 120px;
+      height: 40px;
+    }
+    .header-burger {
+      display: none;
+    }
+    h1 {
+      font-weight: 700;
+      font-size: 32px;
+      color: #363636;
+      margin-right: 435px;
+    }
+    .header-user {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      div {
+        width: 109px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #363636;
+        margin-right: 16px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .header-section {
+    .header {
+      max-width: 1110px;
+      width: 100%;
+      padding: 0 64px 0 64px;
+      height: 96px;
+      .header-logo {
+        display: none;
+      }
+      .header-burger {
+        display: block;
+        margin-right: 24px;
+        button {
+          display: flex;
+          flex-direction: column;
+          .header-burger-line {
+            display: flex;
+            transition: all 0.4s ease-in-out;
+          }
+
+          .header-burger-line:not(:last-child) {
+            margin-bottom: 5px;
+          }
+          .active svg path {
+            fill: var(--color-orange);
+          }
+
+          .active:first-child {
+            transform: rotate(45deg) translateY(6px);
+          }
+
+          .active:last-child {
+            transform: rotate(-45deg) translateY(-6px);
+          }
+        }
+      }
+      h1 {
+        margin-right: 0px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header-section {
+    .header {
+      justify-content: left;
+      margin-top: 0px;
+      .header-user {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .header-section {
+    margin-bottom: 8px;
+    .header {
+      max-width: 420px;
+      width: 100%;
+      padding: 0 16px 0 16px;
+      height: 76px;
+      .header-burger {
+        width: 24px;
+        height: 24px;
+      }
+      h1 {
+        font-size: 18px;
+      }
+    }
+  }
+}

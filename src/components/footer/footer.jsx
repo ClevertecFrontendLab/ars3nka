@@ -4,7 +4,7 @@ import Instagram from './img/inst.png';
 import LinkedIn from './img/linkedin.png';
 import VK from './img/vk.png';
 
-import './footer.css';
+import './footer.scss';
 
 const footerLinksDB = [
   { href: 'https://www.facebook.com/clevertec.ru/', src: Facebook, alt: 'Facebook' },

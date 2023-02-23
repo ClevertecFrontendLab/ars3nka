@@ -3,7 +3,7 @@
 }
 
 .menu-genre-active .menu-genre .menu-genre-genre {
-  color: #f83600;
+  color: var(--color-orange);
 }
 
 .menu-genre button:hover,
@@ -25,6 +25,6 @@
 .menu-genre .menu-genre-amount {
   margin-left: 6px;
   font-size: 14px;
-  color: #a7a7a7;
+  color: var(--color-gray);
   display: inline-block;
 }

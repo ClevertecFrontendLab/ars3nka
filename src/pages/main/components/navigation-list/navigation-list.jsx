@@ -1,23 +1,39 @@
-import sortImg from './img/sort.svg';
+import classNames from 'classnames';
+
+import sortAscending from './img/icon-sort-ascending.svg';
+import sortDescending from './img/icon-sort-descending.svg';
 import { NavInput } from './nav-input/nav-input';
 
 import './navigation-list.css';
 
-export const NavigationList = () => (
+export const NavigationList = ({
+  changeInputText,
+  inputText,
+  toggleSortBooksByRating,
+  isSortBooksDescendingOrder,
+  setBookViewList,
+  setBookViewWindow,
+  isBookList,
+}) => (
   <div className='navigation-list'>
     <div className='navigation-list-left'>
-      <NavInput />
-      <button type='button' className='button-style sort'>
-        <img src={sortImg} alt='' />
+      <NavInput changeInputText={changeInputText} inputText={inputText} />
+      <button
+        type='button'
+        className='button-style sort'
+        onClick={toggleSortBooksByRating}
+        data-test-id='sort-rating-button'
+      >
+        <img src={isSortBooksDescendingOrder ? sortAscending : sortDescending} alt='' />
         <p>По рейтингу</p>
       </button>
     </div>
     <div className='navigation-list-right'>
       <button
         type='button'
-        className='sort-button sort-button-active view-window'
+        className={classNames('sort-button view-window', { sortButtonActive: !isBookList })}
         data-test-id='button-menu-view-window'
-        onClick={viewWindow}
+        onClick={setBookViewWindow}
       >
         <svg width='18' height='19' viewBox='0 0 18 19' xmlns='http://www.w3.org/2000/svg'>
           <path
@@ -27,7 +43,12 @@ export const NavigationList = () => (
           />
         </svg>
       </button>
-      <button type='button' className='sort-button view-list' data-test-id='button-menu-view-list' onClick={viewList}>
+      <button
+        type='button'
+        className={classNames('sort-button view-list', { sortButtonActive: isBookList })}
+        data-test-id='button-menu-view-list'
+        onClick={setBookViewList}
+      >
         <svg width='24' height='25' viewBox='0 0 24 25' xmlns='http://www.w3.org/2000/svg'>
           <path
             fillRule='evenodd'
@@ -50,26 +71,15 @@ export const NavigationList = () => (
   </div>
 );
 
-function viewList() {
-  const books = document.querySelector('.books');
-  const booksList = document.querySelector('.books-list');
-  const windowButton = document.querySelector('.view-window');
-  const listButton = document.querySelector('.view-list');
+export const sortBooksByRating = (books, isSortBooksDescendingOrder) => {
+  const booksWithRating = [];
+  const booksWithoutRating = [];
 
-  books.classList.add('hide');
-  booksList.classList.remove('hide');
-  windowButton.classList.remove('sort-button-active');
-  listButton.classList.add('sort-button-active');
-}
+  books.forEach((book) => (book.rating ? booksWithRating.push(book) : booksWithoutRating.push(book)));
 
-function viewWindow() {
-  const books = document.querySelector('.books');
-  const booksList = document.querySelector('.books-list');
-  const windowButton = document.querySelector('.view-window');
-  const listButton = document.querySelector('.view-list');
+  if (isSortBooksDescendingOrder) {
+    return [...booksWithRating.sort((a, b) => b.rating - a.rating), ...booksWithoutRating];
+  }
 
-  books.classList.remove('hide');
-  booksList.classList.add('hide');
-  windowButton.classList.add('sort-button-active');
-  listButton.classList.remove('sort-button-active');
-}
+  return [...booksWithoutRating, ...booksWithRating.sort((a, b) => a.rating - b.rating)];
+};

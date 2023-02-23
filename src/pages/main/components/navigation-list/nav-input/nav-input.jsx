@@ -1,7 +1,7 @@
 import { ReactComponent as CloseIcon } from '../img/input-close.svg';
 import { ReactComponent as SearchIcon } from '../img/search-icon.svg';
 
-export const NavInput = () => {
+export const NavInput = ({ changeInputText, inputText }) => {
   const hanldeFocusInput = (event) => {
     event.target.parentElement.classList.add('search-active');
     document.getElementsByClassName('close-input').item(0).classList.remove('hide');
@@ -33,14 +33,19 @@ export const NavInput = () => {
         placeholder='Поиск книги или автора…'
         className='search'
         id='search'
+        value={inputText}
         data-test-id='input-search'
+        onChange={(e) => changeInputText(e.target.value)}
         onFocus={(event) => hanldeFocusInput(event)}
         onBlur={(event) => hanldeCloseInput(event)}
       />
       <CloseIcon
         className='close-input hide'
         data-test-id='button-search-close'
-        onClick={(event) => hanldeCloseInput(event)}
+        onClick={(event) => {
+          changeInputText('');
+          hanldeCloseInput(event);
+        }}
       />
     </div>
   );

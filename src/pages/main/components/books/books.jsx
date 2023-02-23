@@ -2,7 +2,7 @@ import { Book } from './components/book/book';
 
 import './books.css';
 
-export const Books = ({ books }) => {
+export const Books = ({ books, inputText }) => {
   const booksElements = books.map((book) => (
     <Book
       image={book.image}
@@ -12,6 +12,7 @@ export const Books = ({ books }) => {
       booking={book.booking}
       id={book.id}
       category={book.categories}
+      inputText={inputText}
     />
   ));
 

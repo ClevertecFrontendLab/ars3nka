@@ -97,3 +97,8 @@ ul,
 li {
   list-style: none;
 }
+
+:root {
+  --color-orange: #f83600;
+  --color-gray: #a7a7a7;
+}
